@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         @livewireStyles
     </head>
-    <body style="background-color: #f4f4f4;">
+    <body style="background-color: #E9E9E9;">
         <div id="layoutAuthentication">
             {{-- Content --}}
             @yield('container')
