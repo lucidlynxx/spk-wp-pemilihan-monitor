@@ -10,7 +10,7 @@
       <div class="card text-bg-light mb-4">
         <div class="card-body">
           <h5 class="card-title">Weighted Product</h5>
-          <p>Metode Weighted Product (WP) adalah salah satu metode yang digunakan untuk penyelesaian sistem pengambilan keputusan dengan mempertimbangkan kriteria dan bobot. Metode WP merupakan salah satu dari beberapa metode Multi Atribute Decision Making (MADM) dimana pengambilan keputusan didasarkan pada beberapa atribut.</p>
+          <p>Metode Weighted Product adalah salah satu metode analisis keputusan multikriteria yang digunakan untuk menyelesaikan masalah dalam pemilihan alternatif terbaik dari beberapa kriteria yang diberikan. Metode ini mempertimbangkan nilai bobot (weight) pada tiap-tiap kriteria yang digunakan dalam pengambilan keputusan.</p>
         </div>
     </div>
   </div>
