@@ -25,7 +25,7 @@
                                     is-invalid
                                 @enderror" id="C1x" name="C1x" required>
                                 @foreach ($C1s as $c1)
-                                    @if (old('C1x', $penilaian->C1x) == $c1->id)
+                                    @if (old('C1x', $penilaian->C1x) == $c1->nHarga)
                                         <option value="{{ $c1->nHarga }}" selected>{{ $c1->harga }}</option> 
                                     @else
                                         <option value="{{ $c1->nHarga }}">{{ $c1->harga }}</option>
@@ -47,7 +47,7 @@
                                     is-invalid
                                 @enderror" id="C2x" name="C2x" required>
                                 @foreach ($C2s as $c2)
-                                    @if (old('C2x', $penilaian->C2x) == $c2->id)
+                                    @if (old('C2x', $penilaian->C2x) == $c2->nUkuranLayar)
                                         <option value="{{ $c2->nUkuranLayar }}" selected>{{ $c2->ukuranLayar }}</option> 
                                     @else
                                         <option value="{{ $c2->nUkuranLayar }}">{{ $c2->ukuranLayar }}</option>
@@ -69,7 +69,7 @@
                                     is-invalid
                                 @enderror" id="C3x" name="C3x" required>
                                 @foreach ($C3s as $c3)
-                                    @if (old('C3x', $penilaian->C3x) == $c3->id)
+                                    @if (old('C3x', $penilaian->C3x) == $c3->nResolusiLayar)
                                         <option value="{{ $c3->nResolusiLayar }}" selected>{{ $c3->resolusiLayar }}</option> 
                                     @else
                                         <option value="{{ $c3->nResolusiLayar }}">{{ $c3->resolusiLayar }}</option>
@@ -91,7 +91,7 @@
                                     is-invalid
                                 @enderror" id="C4x" name="C4x" required>
                                 @foreach ($C4s as $c4)
-                                    @if (old('C4x', $penilaian->C4x) == $c4->id)
+                                    @if (old('C4x', $penilaian->C4x) == $c4->nTeknologiPanel)
                                         <option value="{{ $c4->nTeknologiPanel }}" selected>{{ $c4->teknologiPanel }}</option> 
                                     @else
                                         <option value="{{ $c4->nTeknologiPanel }}">{{ $c4->teknologiPanel }}</option>
@@ -113,7 +113,7 @@
                                     is-invalid
                                 @enderror" id="C5x" name="C5x" required>
                                 @foreach ($C5s as $c5)
-                                    @if (old('C5x', $penilaian->C5x) == $c5->id)
+                                    @if (old('C5x', $penilaian->C5x) == $c5->nRefreshRate)
                                         <option value="{{ $c5->nRefreshRate }}" selected>{{ $c5->refreshRate }}</option> 
                                     @else
                                         <option value="{{ $c5->nRefreshRate }}">{{ $c5->refreshRate }}</option>
@@ -135,7 +135,7 @@
                                     is-invalid
                                 @enderror" id="C6x" name="C6x" required>
                                 @foreach ($C6s as $c6)
-                                    @if (old('C6x', $penilaian->C6x) == $c6->id)
+                                    @if (old('C6x', $penilaian->C6x) == $c6->nResponseTime)
                                         <option value="{{ $c6->nResponseTime }}" selected>{{ $c6->responseTime }}</option> 
                                     @else
                                         <option value="{{ $c6->nResponseTime }}">{{ $c6->responseTime }}</option>
@@ -157,7 +157,7 @@
                                     is-invalid
                                 @enderror" id="C7x" name="C7x" required>
                                 @foreach ($C7s as $c7)
-                                    @if (old('C7x', $penilaian->C7x) == $c7->id)
+                                    @if (old('C7x', $penilaian->C7x) == $c7->nColorGamut)
                                         <option value="{{ $c7->nColorGamut }}" selected>{{ $c7->colorGamut }}</option> 
                                     @else
                                         <option value="{{ $c7->nColorGamut }}">{{ $c7->colorGamut }}</option>
