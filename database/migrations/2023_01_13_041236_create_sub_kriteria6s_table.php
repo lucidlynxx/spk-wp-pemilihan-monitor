@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('sub_kriteria6s', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->string('colorGamut');
             $table->string('slug')->unique();
             $table->integer('nColorGamut');

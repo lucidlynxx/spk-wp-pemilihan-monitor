@@ -121,7 +121,7 @@ class UserTest extends TestCase
         $response->assertStatus(200);
 
         // Log out the user
-        $response = $this->post('/logout');
+        $response = $this->post('/dashboard/logout');
 
         // Check user state
         $response = $this->get('/dashboard');

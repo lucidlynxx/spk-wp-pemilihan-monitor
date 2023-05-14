@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateSubKriteria4Request;
 use App\Models\SubKriteria4;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class SubKriteriaController4 extends Controller
@@ -34,10 +34,10 @@ class SubKriteriaController4 extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.
@@ -76,22 +76,21 @@ class SubKriteriaController4 extends Controller
      * @param  \App\Models\SubKriteria4  $subKriteria4
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubKriteria4 $data_sub_kriteria4)
+    public function update(UpdateSubKriteria4Request $request, SubKriteria4 $data_sub_kriteria4)
     {
         if (Gate::denies('subkriteria4', $data_sub_kriteria4)) {
             abort(403);
         }
 
-        $rules = [
-            'refreshRate' => 'required|max:255',
-            'nRefreshRate' => 'required|numeric|integer',
-        ];
+        $validatedData = $request->validated();
 
         if ($request->slug != $data_sub_kriteria4->slug) {
-            $rules['slug'] = 'required|unique:kriteria4s';
-        }
+            $req = $request->validate([
+                'slug' => 'required|unique:sub_kriteria4s'
+            ]);
 
-        $validatedData = $request->validate($rules);
+            $validatedData['slug'] = $req['slug'];
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
 

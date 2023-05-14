@@ -24,7 +24,8 @@ class UpdateAlternatifRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'kodeAlternatif' => 'required|max:255',
+            'namaAlternatif' => 'required|max:255',
         ];
     }
 }

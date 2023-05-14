@@ -5,14 +5,15 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">Data Perhitungan</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Perhitungan</li>
         </ol>
         <div class="card text-center text-bg-light mb-4">
             <div class="card-body">
-              <h5 class="card-title">Data Perhitungan</h5>
-              <p class="card-text">Hitung Berdasarkan Metode Weight Product (WP)</p>
-              <a href="/dashboard/data-perhitungan/hitung" class="btn btn-dark mb-3"><i class="bi bi-calculator"></i> Hitung</a>
+                <h5 class="card-title">Data Perhitungan</h5>
+                <p class="card-text">Hitung Berdasarkan Metode Weight Product (WP)</p>
+                <a href="{{ route('data-perhitungan.result') }}" class="btn btn-dark mb-3"><i
+                        class="bi bi-calculator"></i> Hitung</a>
             </div>
         </div>
         <div class="card text-bg-light mb-4">
@@ -69,7 +70,7 @@
                     </thead>
                     <tbody class="text-center">
                         @foreach ($kriterias as $kriteria)
-                            <th class="fw-normal">{{ $kriteria->bobot }}</th>
+                        <th class="fw-normal">{{ $kriteria->bobot }}</th>
                         @endforeach
                     </tbody>
                 </table>
@@ -91,7 +92,7 @@
                     </thead>
                     <tbody class="text-center">
                         @foreach ($kriterias as $kriteria)
-                            <th class="fw-normal">{{ round($kriteria->w_normalisasi, 4) }}</th>
+                        <th class="fw-normal">{{ round($kriteria->w_normalisasi, 4) }}</th>
                         @endforeach
                     </tbody>
                 </table>
@@ -176,26 +177,26 @@
 @endsection
 
 @push('table')
-    <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
             $('#example1').DataTable();
         });
-    </script>
-    <script>
-        $(document).ready(function () {
+</script>
+<script>
+    $(document).ready(function () {
             $('#example2').DataTable();
         });
-    </script>
-    <script>
-        $(document).ready(function () {
+</script>
+<script>
+    $(document).ready(function () {
             $('#example3').DataTable();
         });
-    </script>
-    <script>
-        $(document).ready(function () {
+</script>
+<script>
+    $(document).ready(function () {
             $('#example4').DataTable();
         });
-    </script>
+</script>
 @endpush
 
 {{-- {{ Session::get('name') }} --}}

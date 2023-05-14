@@ -24,7 +24,9 @@ class StoreAlternatifRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'kodeAlternatif' => 'required|max:255',
+            'slug' => 'required|unique:alternatifs',
+            'namaAlternatif' => 'required|max:255',
         ];
     }
 }

@@ -5,7 +5,7 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">Data Hasil Akhir</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Hasil Akhir</li>
         </ol>
         <div class="card text-bg-light mb-4">
@@ -15,7 +15,8 @@
             </div>
             <div class="d-flex justify-content-start">
                 <div class="ms-3 mt-3">
-                    <a href="/dashboard/data-hasil-akhir/print" target="_blank" class="btn btn-primary btn-sm"><i class="bi bi-printer"></i> Cetak Data</a>
+                    <a href="{{ route('data-hasil-akhir.result') }}" target="_blank" class="btn btn-primary btn-sm"><i
+                            class="bi bi-printer"></i> Cetak Data</a>
                 </div>
             </div>
             <div class="card-body">

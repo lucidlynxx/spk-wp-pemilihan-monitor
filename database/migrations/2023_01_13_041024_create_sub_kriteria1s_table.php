@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('sub_kriteria1s', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->string('ukuranLayar');
             $table->string('slug')->unique();
             $table->integer('nUkuranLayar');

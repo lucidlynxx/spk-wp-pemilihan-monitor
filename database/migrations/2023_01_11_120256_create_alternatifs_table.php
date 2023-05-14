@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('alternatifs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->string('kodeAlternatif');
             $table->string('slug')->unique();
             $table->string('namaAlternatif');

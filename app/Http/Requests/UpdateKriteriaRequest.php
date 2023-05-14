@@ -24,7 +24,10 @@ class UpdateKriteriaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'kodeKriteria' => 'required|max:255',
+            'namaKriteria' => 'required',
+            'bobot' => 'required|numeric|integer',
+            'jenis' => 'required',
         ];
     }
 }

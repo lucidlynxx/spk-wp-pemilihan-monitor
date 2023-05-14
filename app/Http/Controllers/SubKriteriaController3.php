@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateSubKriteria3Request;
 use App\Models\SubKriteria3;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class SubKriteriaController3 extends Controller
@@ -34,10 +34,10 @@ class SubKriteriaController3 extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.
@@ -76,22 +76,21 @@ class SubKriteriaController3 extends Controller
      * @param  \App\Models\SubKriteria3  $subKriteria3
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubKriteria3 $data_sub_kriteria3)
+    public function update(UpdateSubKriteria3Request $request, SubKriteria3 $data_sub_kriteria3)
     {
         if (Gate::denies('subkriteria3', $data_sub_kriteria3)) {
             abort(403);
         }
 
-        $rules = [
-            'teknologiPanel' => 'required|max:255',
-            'nTeknologiPanel' => 'required|numeric|integer',
-        ];
+        $validatedData = $request->validated();
 
         if ($request->slug != $data_sub_kriteria3->slug) {
-            $rules['slug'] = 'required|unique:kriteria3s';
-        }
+            $req = $request->validate([
+                'slug' => 'required|unique:sub_kriteria3s'
+            ]);
 
-        $validatedData = $request->validate($rules);
+            $validatedData['slug'] = $req['slug'];
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
 

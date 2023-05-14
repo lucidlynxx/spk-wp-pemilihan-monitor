@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreKriteriaRequest extends FormRequest
+class UpdateSubKriteria1Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreKriteriaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreKriteriaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'ukuranLayar' => 'required|max:255',
+            'nUkuranLayar' => 'required|numeric|integer',
         ];
     }
 }

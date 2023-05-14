@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSubKriteriaRequest extends FormRequest
+class UpdateSubKriteria2Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UpdateSubKriteriaRequest extends FormRequest
     public function rules()
     {
         return [
-            'harga' => 'required|max:255',
-            'nHarga' => 'required|numeric|integer',
+            'resolusiLayar' => 'required|max:255',
+            'nResolusiLayar' => 'required|numeric|integer',
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Penilaian;
 use App\Models\User;
+use App\Models\Alternatif;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -36,9 +37,15 @@ class PenilaianTest extends TestCase
     public function test_auth_user_can_access_store_penilaian()
     {
         $user = User::factory()->create();
+        $alternatif = Alternatif::create([
+            'user_id' => $user->id,
+            'kodeAlternatif' => 'A1',
+            'slug' => 'a-1',
+            'namaAlternatif' => 'MSI OPTIX MAG274QRF'
+        ]);
         $response = $this->actingAs($user)->post('/dashboard/data-penilaian', [
             'user_id' => $user->id,
-            'alternatif_id' => 1,
+            'alternatif_id' => $alternatif->id,
             'slug' => 'aboggoba',
             'C1x' => 3,
             'C2x' => 2,
@@ -54,7 +61,7 @@ class PenilaianTest extends TestCase
         $this->assertCount(1, Penilaian::all());
         $this->assertDatabaseHas('penilaians', [
             'user_id' => $user->id,
-            'alternatif_id' => 1,
+            'alternatif_id' => $alternatif->id,
             'slug' => 'aboggoba',
             'C1x' => 3,
             'C2x' => 2,
@@ -69,9 +76,15 @@ class PenilaianTest extends TestCase
     public function test_auth_user_can_access_edit_penilaian()
     {
         $user = User::factory()->create();
+        $alternatif = Alternatif::create([
+            'user_id' => $user->id,
+            'kodeAlternatif' => 'A1',
+            'slug' => 'a-1',
+            'namaAlternatif' => 'MSI OPTIX MAG274QRF'
+        ]);
         $data_penilaian = Penilaian::create([
             'user_id' => $user->id,
-            'alternatif_id' => 1,
+            'alternatif_id' => $alternatif->id,
             'slug' => 'aboggoba',
             'C1x' => 3,
             'C2x' => 2,
@@ -91,9 +104,15 @@ class PenilaianTest extends TestCase
     public function test_auth_user_can_access_update_penilaian()
     {
         $user = User::factory()->create();
+        $alternatif = Alternatif::create([
+            'user_id' => $user->id,
+            'kodeAlternatif' => 'A1',
+            'slug' => 'a-1',
+            'namaAlternatif' => 'MSI OPTIX MAG274QRF'
+        ]);
         Penilaian::create([
             'user_id' => $user->id,
-            'alternatif_id' => 1,
+            'alternatif_id' => $alternatif->id,
             'slug' => 'aboggoba',
             'C1x' => 3,
             'C2x' => 2,
@@ -109,7 +128,7 @@ class PenilaianTest extends TestCase
         $this->assertCount(1, Penilaian::all());
         $response = $this->actingAs($user)->put('/dashboard/data-penilaian/' . $data_penilaian->slug, [
             'user_id' => $user->id,
-            'alternatif_id' => 1,
+            'alternatif_id' => $alternatif->id,
             'slug' => 'aboggoba',
             'C1x' => 3,
             'C2x' => 2,

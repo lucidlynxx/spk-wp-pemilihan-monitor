@@ -25,6 +25,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::create([
+            'name' => 'Dzaky Syahrizal',
+            'username' => 'jumpinJackFlash',
+            'password' => bcrypt('password'),
+            'is_admin' => 1
+        ]);
+
         Kriteria::create([
             'user_id' => '1',
             'kodeKriteria' => 'C1',
@@ -445,13 +452,6 @@ class DatabaseSeeder extends Seeder
             'C5x' => '2',
             'C6x' => '4',
             'C7x' => '1',
-        ]);
-
-        User::create([
-            'name' => 'Dzaky Syahrizal',
-            'username' => 'jumpinJackFlash',
-            'password' => bcrypt('password'),
-            'is_admin' => 1
         ]);
 
         // User::factory(1)->create();

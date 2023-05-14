@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\SubKriteria;
-use App\Http\Requests\StoreSubKriteriaRequest;
 use App\Http\Requests\UpdateSubKriteriaRequest;
 use App\Models\SubKriteria1;
 use App\Models\SubKriteria2;
@@ -51,10 +50,10 @@ class SubKriteriaController extends Controller
      * @param  \App\Http\Requests\StoreSubKriteriaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSubKriteriaRequest $request)
-    {
-        //
-    }
+    // public function store(StoreSubKriteriaRequest $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.
@@ -98,16 +97,15 @@ class SubKriteriaController extends Controller
             abort(403);
         }
 
-        $rules = [
-            'harga' => 'required|max:255',
-            'nHarga' => 'required|numeric|integer',
-        ];
+        $validatedData = $request->validated();
 
         if ($request->slug != $data_sub_kriterium->slug) {
-            $rules['slug'] = 'required|unique:sub_kriterias';
-        }
+            $req = $request->validate([
+                'slug' => 'required|unique:sub_kriterias'
+            ]);
 
-        $validatedData = $request->validate($rules);
+            $validatedData['slug'] = $req['slug'];
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
 

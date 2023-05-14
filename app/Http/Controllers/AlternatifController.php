@@ -46,11 +46,7 @@ class AlternatifController extends Controller
     public function store(StoreAlternatifRequest $request)
     {
         // $request->slug = SlugService::createSlug(Alternatif::class, 'slug', $request->kodeAlternatif);
-        $validatedData = $request->validate([
-            'kodeAlternatif' => 'required|max:255',
-            'slug' => 'required|unique:alternatifs',
-            'namaAlternatif' => 'required|max:255',
-        ]);
+        $validatedData = $request->validated();
 
         $validatedData['user_id'] = auth()->user()->id;
 
@@ -104,16 +100,15 @@ class AlternatifController extends Controller
             abort(403);
         }
 
-        $rules = [
-            'kodeAlternatif' => 'required|max:255',
-            'namaAlternatif' => 'required|max:255',
-        ];
+        $validatedData = $request->validated();
 
         if ($request->slug != $data_alternatif->slug) {
-            $rules['slug'] = 'required|unique:alternatifs';
-        }
+            $req = $request->validate([
+                'slug' => 'required|unique:alternatifs'
+            ]);
 
-        $validatedData = $request->validate($rules);
+            $validatedData['slug'] = $req['slug'];
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
 

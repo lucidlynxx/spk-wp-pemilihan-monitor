@@ -39,10 +39,10 @@ class KriteriaController extends Controller
      * @param  \App\Http\Requests\StoreKriteriaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreKriteriaRequest $request)
-    {
-        //
-    }
+    // public function store(StoreKriteriaRequest $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.
@@ -87,18 +87,15 @@ class KriteriaController extends Controller
             abort(403);
         }
 
-        $rules = [
-            'kodeKriteria' => 'required|max:255',
-            'namaKriteria' => 'required',
-            'bobot' => 'required|numeric|integer',
-            'jenis' => 'required',
-        ];
+        $validatedData = $request->validated();
 
         if ($request->slug != $data_kriterium->slug) {
-            $rules['slug'] = 'required|unique:kriterias';
-        }
+            $req = $request->validate([
+                'slug' => 'required|unique:kriterias'
+            ]);
 
-        $validatedData = $request->validate($rules);
+            $validatedData['slug'] = $req['slug'];
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
 

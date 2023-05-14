@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('sub_kriteria4s', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->string('refreshRate');
             $table->string('slug')->unique();
             $table->integer('nRefreshRate');

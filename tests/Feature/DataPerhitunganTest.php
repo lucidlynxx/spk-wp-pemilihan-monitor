@@ -100,7 +100,7 @@ class DataPerhitunganTest extends TestCase
             'namaAlternatif' => 'MSI OPTIX MAG274QRF'
         ]);
 
-        $penilaians = Penilaian::create([
+        Penilaian::create([
             'user_id' => $user->id,
             'alternatif_id' => $alternatif->id,
             'slug' => 'aboggoba',

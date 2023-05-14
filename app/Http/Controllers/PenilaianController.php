@@ -60,17 +60,7 @@ class PenilaianController extends Controller
      */
     public function store(StorePenilaianRequest $request)
     {
-        $validatedData = $request->validate([
-            'alternatif_id' => 'required|numeric|integer|unique:penilaians',
-            'slug' => 'required',
-            'C1x' => 'required|numeric|integer',
-            'C2x' => 'required|numeric|integer',
-            'C3x' => 'required|numeric|integer',
-            'C4x' => 'required|numeric|integer',
-            'C5x' => 'required|numeric|integer',
-            'C6x' => 'required|numeric|integer',
-            'C7x' => 'required|numeric|integer',
-        ]);
+        $validatedData = $request->validated();
 
         $validatedData['user_id'] = auth()->user()->id;
 
@@ -116,6 +106,7 @@ class PenilaianController extends Controller
             'title' => 'SPK WP | Ubah Data Penilaian',
             'author' => 'Dzaky Syahrizal',
             'penilaian' => $data_penilaian,
+            'alternatifs' => Alternatif::get()->where('user_id', auth()->user()->id),
             'C1s' => SubKriteria::get()->where('user_id', auth()->user()->id),
             'C2s' => SubKriteria1::get()->where('user_id', auth()->user()->id),
             'C3s' => SubKriteria2::get()->where('user_id', auth()->user()->id),
@@ -139,17 +130,7 @@ class PenilaianController extends Controller
             abort(403);
         }
 
-        $rules = [
-            'C1x' => 'required|numeric|integer',
-            'C2x' => 'required|numeric|integer',
-            'C3x' => 'required|numeric|integer',
-            'C4x' => 'required|numeric|integer',
-            'C5x' => 'required|numeric|integer',
-            'C6x' => 'required|numeric|integer',
-            'C7x' => 'required|numeric|integer',
-        ];
-
-        $validatedData = $request->validate($rules);
+        $validatedData = $request->validated();
 
         $validatedData['user_id'] = auth()->user()->id;
 

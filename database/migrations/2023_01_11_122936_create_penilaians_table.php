@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('penilaians', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('alternatif_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade');
+            $table->foreignId('alternatif_id')
+                ->constrained('alternatifs')
+                ->onDelete('cascade');
             $table->string('slug')->unique();
             $table->integer('C1x');
             $table->integer('C2x');
