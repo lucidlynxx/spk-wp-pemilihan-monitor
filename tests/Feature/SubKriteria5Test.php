@@ -18,12 +18,7 @@ class SubKriteria5Test extends TestCase
     public function test_auth_user_can_access_edit_sub_kriteria5()
     {
         $user = User::factory()->create();
-        $data_sub_kriteria5 = SubKriteria5::create([
-            'user_id' => $user->id,
-            'responseTime' => '6 ms - 5 ms',
-            'slug' => 'c6-subkriteria',
-            'nResponseTime' => 1,
-        ]);
+        $data_sub_kriteria5 = SubKriteria5::first();
 
         $response = $this->actingAs($user)->get('/dashboard/data-sub-kriteria5/' . $data_sub_kriteria5->slug . '/edit');
 
@@ -34,16 +29,10 @@ class SubKriteria5Test extends TestCase
     public function test_auth_user_can_access_update_sub_kriteria5()
     {
         $user = User::factory()->create();
-        SubKriteria5::create([
-            'user_id' => $user->id,
-            'responseTime' => '6 ms - 5 ms',
-            'slug' => 'c6-subkriteria',
-            'nResponseTime' => 1,
-        ]);
 
         $data_sub_kriteria5 = SubKriteria5::first();
 
-        $this->assertCount(1, SubKriteria5::all());
+        $this->assertCount(5, SubKriteria5::all());
         $response = $this->actingAs($user)->put('/dashboard/data-sub-kriteria5/' . $data_sub_kriteria5->slug, [
             'user_id' => $user->id,
             'responseTime' => '6 ms - 5 ms',

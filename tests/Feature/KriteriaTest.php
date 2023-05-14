@@ -27,14 +27,8 @@ class KriteriaTest extends TestCase
     public function test_auth_user_can_access_edit_kriteria()
     {
         $user = User::factory()->create();
-        $data_kriterium = Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C1',
-            'slug' => 'c1',
-            'namaKriteria' => 'Harga',
-            'bobot' => 4,
-            'jenis' => 'cost'
-        ]);
+
+        $data_kriterium = Kriteria::first();
 
         $response = $this->actingAs($user)->get('/dashboard/data-kriteria/' . $data_kriterium->slug . '/edit');
 
@@ -45,18 +39,10 @@ class KriteriaTest extends TestCase
     public function test_auth_user_can_access_update_kriteria()
     {
         $user = User::factory()->create();
-        Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C1',
-            'slug' => 'c1',
-            'namaKriteria' => 'Harga',
-            'bobot' => 4,
-            'jenis' => 'cost'
-        ]);
 
         $data_kriterium = Kriteria::first();
 
-        $this->assertCount(1, Kriteria::all());
+        $this->assertCount(7, Kriteria::all());
         $response = $this->actingAs($user)->put('/dashboard/data-kriteria/' . $data_kriterium->slug, [
             'kodeKriteria' => 'C1',
             'slug' => 'c1',

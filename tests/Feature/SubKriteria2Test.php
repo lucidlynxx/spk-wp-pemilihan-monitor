@@ -18,12 +18,7 @@ class SubKriteria2Test extends TestCase
     public function test_auth_user_can_access_edit_sub_kriteria2()
     {
         $user = User::factory()->create();
-        $data_sub_kriteria2 = SubKriteria2::create([
-            'user_id' => $user->id,
-            'resolusiLayar' => '720p/768p (HD)',
-            'slug' => 'c3-subkriteria',
-            'nResolusiLayar' => 1,
-        ]);
+        $data_sub_kriteria2 = SubKriteria2::first();
 
         $response = $this->actingAs($user)->get('/dashboard/data-sub-kriteria2/' . $data_sub_kriteria2->slug . '/edit');
 
@@ -34,16 +29,10 @@ class SubKriteria2Test extends TestCase
     public function test_auth_user_can_access_update_sub_kriteria2()
     {
         $user = User::factory()->create();
-        SubKriteria2::create([
-            'user_id' => $user->id,
-            'resolusiLayar' => '720p/768p (HD)',
-            'slug' => 'c3-subkriteria',
-            'nResolusiLayar' => 1,
-        ]);
 
         $data_sub_kriteria2 = SubKriteria2::first();
 
-        $this->assertCount(1, SubKriteria2::all());
+        $this->assertCount(5, SubKriteria2::all());
         $response = $this->actingAs($user)->put('/dashboard/data-sub-kriteria2/' . $data_sub_kriteria2->slug, [
             'user_id' => $user->id,
             'resolusiLayar' => '720p/768p (HD)',

@@ -55,7 +55,7 @@ class WeightedProductService implements WeightedProductInterface
             $penilaian->save();
         }
 
-        return [$penilaians, $kriterias];
+        return [$penilaians, $kriterias, $total_nilai_s];
     }
 
     public function getAllAlternatifs()

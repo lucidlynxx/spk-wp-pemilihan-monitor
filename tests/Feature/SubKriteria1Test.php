@@ -18,12 +18,7 @@ class SubKriteria1Test extends TestCase
     public function test_auth_user_can_access_edit_sub_kriteria1()
     {
         $user = User::factory()->create();
-        $data_sub_kriteria1 = SubKriteria1::create([
-            'user_id' => $user->id,
-            'ukuranLayar' => '18.5 inch - 24.6 inch',
-            'slug' => 'c2-subkriteria',
-            'nUkuranLayar' => 1,
-        ]);
+        $data_sub_kriteria1 = SubKriteria1::first();
 
         $response = $this->actingAs($user)->get('/dashboard/data-sub-kriteria1/' . $data_sub_kriteria1->slug . '/edit');
 
@@ -34,16 +29,10 @@ class SubKriteria1Test extends TestCase
     public function test_auth_user_can_access_update_sub_kriteria1()
     {
         $user = User::factory()->create();
-        SubKriteria1::create([
-            'user_id' => $user->id,
-            'ukuranLayar' => '18.5 inch - 24.6 inch',
-            'slug' => 'c2-subkriteria',
-            'nUkuranLayar' => 1,
-        ]);
 
         $data_sub_kriteria1 = SubKriteria1::first();
 
-        $this->assertCount(1, SubKriteria1::all());
+        $this->assertCount(5, SubKriteria1::all());
         $response = $this->actingAs($user)->put('/dashboard/data-sub-kriteria1/' . $data_sub_kriteria1->slug, [
             'user_id' => $user->id,
             'ukuranLayar' => '18.5 inch - 24.6 inch',

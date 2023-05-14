@@ -27,12 +27,7 @@ class SubKriteriaTest extends TestCase
     public function test_auth_user_can_access_edit_sub_kriteria()
     {
         $user = User::factory()->create();
-        $data_sub_kriterium = SubKriteria::create([
-            'user_id' => $user->id,
-            'harga' => 'Rp 1.5 juta - Rp 3 juta',
-            'slug' => 'c1-subkriteria',
-            'nHarga' => 1,
-        ]);
+        $data_sub_kriterium = SubKriteria::first();
 
         $response = $this->actingAs($user)->get('/dashboard/data-sub-kriteria/' . $data_sub_kriterium->slug . '/edit');
 
@@ -43,16 +38,10 @@ class SubKriteriaTest extends TestCase
     public function test_auth_user_can_access_update_sub_kriteria()
     {
         $user = User::factory()->create();
-        SubKriteria::create([
-            'user_id' => $user->id,
-            'harga' => 'Rp 1.5 juta - Rp 3 juta',
-            'slug' => 'c1-subkriteria',
-            'nHarga' => 1,
-        ]);
 
         $data_sub_kriterium = SubKriteria::first();
 
-        $this->assertCount(1, SubKriteria::all());
+        $this->assertCount(5, SubKriteria::all());
         $response = $this->actingAs($user)->put('/dashboard/data-sub-kriteria/' . $data_sub_kriterium->slug, [
             'user_id' => $user->id,
             'harga' => 'Rp 1.5 juta - Rp 3 juta',

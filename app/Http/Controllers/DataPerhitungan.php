@@ -19,9 +19,7 @@ class DataPerhitungan extends Controller
 
         $alternatifs = $weightedProduct->getAllAlternatifs();
 
-        list($penilaians, $kriterias) = $weightedProduct->calculate();
-
-        $total_nilai_s = $penilaians->sum('nilai_s');
+        list($penilaians, $kriterias, $total_nilai_s) = $weightedProduct->calculate();
 
         if ($penilaians->isEmpty() || $alternatifs->isEmpty()) {
             return view('dashboard.perhitungan.empty', compact('title'));

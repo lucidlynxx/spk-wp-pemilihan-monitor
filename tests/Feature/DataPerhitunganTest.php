@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\Alternatif;
-use App\Models\Kriteria;
 use App\Models\Penilaian;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,69 +28,6 @@ class DataPerhitunganTest extends TestCase
     public function test_auth_user_can_access_data_perhitungan_with_value()
     {
         $user = User::factory()->create();
-
-        Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C1',
-            'slug' => 'C1',
-            'namaKriteria' => 'Harga',
-            'bobot' => '4',
-            'jenis' => 'cost'
-        ]);
-
-        Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C2',
-            'slug' => 'C2',
-            'namaKriteria' => 'Ukuran Layar',
-            'bobot' => '3',
-            'jenis' => 'benefit'
-        ]);
-
-        Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C3',
-            'slug' => 'C3',
-            'namaKriteria' => 'Resolusi Layar',
-            'bobot' => '5',
-            'jenis' => 'benefit'
-        ]);
-
-        Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C4',
-            'slug' => 'C4',
-            'namaKriteria' => 'Teknologi Panel',
-            'bobot' => '5',
-            'jenis' => 'benefit'
-        ]);
-
-        Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C5',
-            'slug' => 'C5',
-            'namaKriteria' => 'Refresh Rate',
-            'bobot' => '3',
-            'jenis' => 'benefit'
-        ]);
-
-        Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C6',
-            'slug' => 'C6',
-            'namaKriteria' => 'Response Time',
-            'bobot' => '3',
-            'jenis' => 'benefit'
-        ]);
-
-        Kriteria::create([
-            'user_id' => $user->id,
-            'kodeKriteria' => 'C7',
-            'slug' => 'C7',
-            'namaKriteria' => 'Color Gamut',
-            'bobot' => '4',
-            'jenis' => 'benefit'
-        ]);
 
         $alternatif = Alternatif::create([
             'user_id' => $user->id,

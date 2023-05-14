@@ -18,12 +18,7 @@ class SubKriteria3Test extends TestCase
     public function test_auth_user_can_access_edit_sub_kriteria3()
     {
         $user = User::factory()->create();
-        $data_sub_kriteria3 = SubKriteria3::create([
-            'user_id' => $user->id,
-            'teknologiPanel' => 'TN (Twisted Nematic)',
-            'slug' => 'c4-subkriteria',
-            'nTeknologiPanel' => 1,
-        ]);
+        $data_sub_kriteria3 = SubKriteria3::first();
 
         $response = $this->actingAs($user)->get('/dashboard/data-sub-kriteria3/' . $data_sub_kriteria3->slug . '/edit');
 
@@ -34,16 +29,10 @@ class SubKriteria3Test extends TestCase
     public function test_auth_user_can_access_update_sub_kriteria3()
     {
         $user = User::factory()->create();
-        SubKriteria3::create([
-            'user_id' => $user->id,
-            'teknologiPanel' => 'TN (Twisted Nematic)',
-            'slug' => 'c4-subkriteria',
-            'nTeknologiPanel' => 1,
-        ]);
 
         $data_sub_kriteria3 = SubKriteria3::first();
 
-        $this->assertCount(1, SubKriteria3::all());
+        $this->assertCount(5, SubKriteria3::all());
         $response = $this->actingAs($user)->put('/dashboard/data-sub-kriteria3/' . $data_sub_kriteria3->slug, [
             'user_id' => $user->id,
             'teknologiPanel' => 'TN (Twisted Nematic)',

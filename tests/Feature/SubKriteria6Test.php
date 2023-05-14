@@ -18,12 +18,7 @@ class SubKriteria6Test extends TestCase
     public function test_auth_user_can_access_edit_sub_kriteria6()
     {
         $user = User::factory()->create();
-        $data_sub_kriteria6 = SubKriteria6::create([
-            'user_id' => $user->id,
-            'colorGamut' => 'NTSC 72%',
-            'slug' => 'c7-subkriteria',
-            'nColorGamut' => 1,
-        ]);
+        $data_sub_kriteria6 = SubKriteria6::first();
 
         $response = $this->actingAs($user)->get('/dashboard/data-sub-kriteria6/' . $data_sub_kriteria6->slug . '/edit');
 
@@ -34,16 +29,10 @@ class SubKriteria6Test extends TestCase
     public function test_auth_user_can_access_update_sub_kriteria6()
     {
         $user = User::factory()->create();
-        SubKriteria6::create([
-            'user_id' => $user->id,
-            'colorGamut' => 'NTSC 72%',
-            'slug' => 'c7-subkriteria',
-            'nColorGamut' => 1,
-        ]);
 
         $data_sub_kriteria6 = SubKriteria6::first();
 
-        $this->assertCount(1, SubKriteria6::all());
+        $this->assertCount(5, SubKriteria6::all());
         $response = $this->actingAs($user)->put('/dashboard/data-sub-kriteria6/' . $data_sub_kriteria6->slug, [
             'user_id' => $user->id,
             'colorGamut' => 'NTSC 72%',

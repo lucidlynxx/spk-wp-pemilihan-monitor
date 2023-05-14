@@ -18,12 +18,7 @@ class SubKriteria4Test extends TestCase
     public function test_auth_user_can_access_edit_sub_kriteria4()
     {
         $user = User::factory()->create();
-        $data_sub_kriteria4 = SubKriteria4::create([
-            'user_id' => $user->id,
-            'refreshRate' => '60 Hz - 75 Hz',
-            'slug' => 'c5-subkriteria',
-            'nRefreshRate' => 1,
-        ]);
+        $data_sub_kriteria4 = SubKriteria4::first();
 
         $response = $this->actingAs($user)->get('/dashboard/data-sub-kriteria4/' . $data_sub_kriteria4->slug . '/edit');
 
@@ -34,16 +29,10 @@ class SubKriteria4Test extends TestCase
     public function test_auth_user_can_access_update_sub_kriteria4()
     {
         $user = User::factory()->create();
-        SubKriteria4::create([
-            'user_id' => $user->id,
-            'refreshRate' => '60 Hz - 75 Hz',
-            'slug' => 'c5-subkriteria',
-            'nRefreshRate' => 1,
-        ]);
 
         $data_sub_kriteria4 = SubKriteria4::first();
 
-        $this->assertCount(1, SubKriteria4::all());
+        $this->assertCount(5, SubKriteria4::all());
         $response = $this->actingAs($user)->put('/dashboard/data-sub-kriteria4/' . $data_sub_kriteria4->slug, [
             'user_id' => $user->id,
             'refreshRate' => '60 Hz - 75 Hz',
