@@ -62,11 +62,10 @@ class SubKriteriaController5 extends Controller
             abort(403);
         }
 
-        return view('dashboard.subKriteria.edit5', [
-            'title' => 'SPK WP | Ubah Data Sub Kriteria',
-            'author' => 'Dzaky Syahrizal',
-            'subkriteria' => $data_sub_kriteria5,
-        ]);
+        $title = 'SPK WP | Ubah Data Sub Kriteria';
+        $subkriteria = $data_sub_kriteria5;
+
+        return view('dashboard.subKriteria.edit5', compact('title', 'subkriteria'));
     }
 
     /**

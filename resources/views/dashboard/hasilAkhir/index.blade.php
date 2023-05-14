@@ -30,11 +30,11 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        @foreach ($penilaians as $penilaian)
+                        @foreach ($rankingWP as $rWP)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $penilaian->alternatif->namaAlternatif }}</td>
-                            <td>{{ round($penilaian->nilai_v, 4) }}</td>
+                            <td>{{ $rWP->alternatif->namaAlternatif }}</td>
+                            <td>{{ round($rWP->nilai_v, 4) }}</td>
                             <td>{{ $loop->iteration }}</td>
                         </tr>
                         @endforeach

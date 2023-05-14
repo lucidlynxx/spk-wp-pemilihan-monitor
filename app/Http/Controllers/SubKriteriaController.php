@@ -21,17 +21,25 @@ class SubKriteriaController extends Controller
      */
     public function index()
     {
-        return view('dashboard.subKriteria.index', [
-            'title' => 'SPK WP | Data Sub Kriteria',
-            'author' => 'Dzaky Syahrizal',
-            'sub_kriterias' => SubKriteria::get()->where('user_id', auth()->user()->id),
-            'sub_kriteria1s' => SubKriteria1::get()->where('user_id', auth()->user()->id),
-            'sub_kriteria2s' => SubKriteria2::get()->where('user_id', auth()->user()->id),
-            'sub_kriteria3s' => SubKriteria3::get()->where('user_id', auth()->user()->id),
-            'sub_kriteria4s' => SubKriteria4::get()->where('user_id', auth()->user()->id),
-            'sub_kriteria5s' => SubKriteria5::get()->where('user_id', auth()->user()->id),
-            'sub_kriteria6s' => SubKriteria6::get()->where('user_id', auth()->user()->id),
-        ]);
+        $title = 'SPK WP | Data Sub Kriteria';
+        $sub_kriterias = SubKriteria::get()->where('user_id', auth()->user()->id);
+        $sub_kriteria1s = SubKriteria1::get()->where('user_id', auth()->user()->id);
+        $sub_kriteria2s = SubKriteria2::get()->where('user_id', auth()->user()->id);
+        $sub_kriteria3s = SubKriteria3::get()->where('user_id', auth()->user()->id);
+        $sub_kriteria4s = SubKriteria4::get()->where('user_id', auth()->user()->id);
+        $sub_kriteria5s = SubKriteria5::get()->where('user_id', auth()->user()->id);
+        $sub_kriteria6s = SubKriteria6::get()->where('user_id', auth()->user()->id);
+
+        return view('dashboard.subKriteria.index', compact(
+            'title',
+            'sub_kriterias',
+            'sub_kriteria1s',
+            'sub_kriteria2s',
+            'sub_kriteria3s',
+            'sub_kriteria4s',
+            'sub_kriteria5s',
+            'sub_kriteria6s'
+        ));
     }
 
     /**
@@ -77,11 +85,10 @@ class SubKriteriaController extends Controller
             abort(403);
         }
 
-        return view('dashboard.subKriteria.edit', [
-            'title' => 'SPK WP | Ubah Data Sub Kriteria',
-            'author' => 'Dzaky Syahrizal',
-            'subkriteria' => $data_sub_kriterium,
-        ]);
+        $title = 'SPK WP | Ubah Data Sub Kriteria';
+        $subkriteria = $data_sub_kriterium;
+
+        return view('dashboard.subKriteria.edit', compact('title', 'subkriteria'));
     }
 
     /**

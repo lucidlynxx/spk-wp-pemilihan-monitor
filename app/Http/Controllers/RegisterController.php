@@ -20,10 +20,9 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('login.register', [
-            'title' => 'SPK WP | Register',
-            'author' => 'Dzaky Syahrizal'
-        ]);
+        $title = 'SPK WP | Register';
+
+        return view('login.register', compact('title'));
     }
 
     public function store(Request $request)

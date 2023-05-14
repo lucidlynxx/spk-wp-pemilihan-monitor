@@ -24,11 +24,10 @@ class PenilaianController extends Controller
      */
     public function index()
     {
-        return view('dashboard.penilaian.index', [
-            'title' => 'SPK WP | Data Penilaian',
-            'author' => 'Dzaky Syahrizal',
-            'penilaians' => Penilaian::get()->where('user_id', auth()->user()->id)
-        ]);
+        $title = 'SPK WP | Data Penilaian';
+        $penilaians = Penilaian::get()->where('user_id', auth()->user()->id);
+
+        return view('dashboard.penilaian.index', compact('title', 'penilaians'));
     }
 
     /**
@@ -38,18 +37,17 @@ class PenilaianController extends Controller
      */
     public function create()
     {
-        return view('dashboard.penilaian.create', [
-            'title' => 'SPK WP | Data Penilaian',
-            'author' => 'Dzaky Syahrizal',
-            'alternatifs' => Alternatif::get()->where('user_id', auth()->user()->id),
-            'C1s' => SubKriteria::get()->where('user_id', auth()->user()->id),
-            'C2s' => SubKriteria1::get()->where('user_id', auth()->user()->id),
-            'C3s' => SubKriteria2::get()->where('user_id', auth()->user()->id),
-            'C4s' => SubKriteria3::get()->where('user_id', auth()->user()->id),
-            'C5s' => SubKriteria4::get()->where('user_id', auth()->user()->id),
-            'C6s' => SubKriteria5::get()->where('user_id', auth()->user()->id),
-            'C7s' => SubKriteria6::get()->where('user_id', auth()->user()->id),
-        ]);
+        $title = 'SPK WP | Data Penilaian';
+        $alternatifs = Alternatif::get()->where('user_id', auth()->user()->id);
+        $C1s = SubKriteria::get()->where('user_id', auth()->user()->id);
+        $C2s = SubKriteria1::get()->where('user_id', auth()->user()->id);
+        $C3s = SubKriteria2::get()->where('user_id', auth()->user()->id);
+        $C4s = SubKriteria3::get()->where('user_id', auth()->user()->id);
+        $C5s = SubKriteria4::get()->where('user_id', auth()->user()->id);
+        $C6s = SubKriteria5::get()->where('user_id', auth()->user()->id);
+        $C7s = SubKriteria6::get()->where('user_id', auth()->user()->id);
+
+        return view('dashboard.penilaian.create', compact('title', 'alternatifs', 'C1s', 'C2s', 'C3s', 'C4s', 'C5s', 'C6s', 'C7s'));
     }
 
     /**
@@ -102,19 +100,18 @@ class PenilaianController extends Controller
             abort(403);
         }
 
-        return view('dashboard.penilaian.edit', [
-            'title' => 'SPK WP | Ubah Data Penilaian',
-            'author' => 'Dzaky Syahrizal',
-            'penilaian' => $data_penilaian,
-            'alternatifs' => Alternatif::get()->where('user_id', auth()->user()->id),
-            'C1s' => SubKriteria::get()->where('user_id', auth()->user()->id),
-            'C2s' => SubKriteria1::get()->where('user_id', auth()->user()->id),
-            'C3s' => SubKriteria2::get()->where('user_id', auth()->user()->id),
-            'C4s' => SubKriteria3::get()->where('user_id', auth()->user()->id),
-            'C5s' => SubKriteria4::get()->where('user_id', auth()->user()->id),
-            'C6s' => SubKriteria5::get()->where('user_id', auth()->user()->id),
-            'C7s' => SubKriteria6::get()->where('user_id', auth()->user()->id),
-        ]);
+        $title = 'SPK WP | Ubah Data Penilaian';
+        $penilaian = $data_penilaian;
+        $alternatifs = Alternatif::get()->where('user_id', auth()->user()->id);
+        $C1s = SubKriteria::get()->where('user_id', auth()->user()->id);
+        $C2s = SubKriteria1::get()->where('user_id', auth()->user()->id);
+        $C3s = SubKriteria2::get()->where('user_id', auth()->user()->id);
+        $C4s = SubKriteria3::get()->where('user_id', auth()->user()->id);
+        $C5s = SubKriteria4::get()->where('user_id', auth()->user()->id);
+        $C6s = SubKriteria5::get()->where('user_id', auth()->user()->id);
+        $C7s = SubKriteria6::get()->where('user_id', auth()->user()->id);
+
+        return view('dashboard.penilaian.edit', compact('title', 'penilaian', 'alternatifs', 'C1s', 'C2s', 'C3s', 'C4s', 'C5s', 'C6s', 'C7s'));
     }
 
     /**

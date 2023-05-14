@@ -10,9 +10,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index', [
-            'title' => 'SPK WP | Dashboard',
-            'author' => 'Dzaky Syahrizal',
-        ]);
+        $title = 'SPK WP | Dashboard';
+
+        return view('dashboard.index', compact('title'));
     }
 }

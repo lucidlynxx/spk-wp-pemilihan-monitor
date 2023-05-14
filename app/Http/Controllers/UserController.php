@@ -14,11 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.user.index', [
-            'title' => 'SPK WP | Data Penilaian',
-            'author' => 'Dzaky Syahrizal',
-            'users' => user::get()
-        ]);
+        $title = 'SPK WP | Data Users';
+        $users = User::get();
+
+        return view('dashboard.user.index', compact('title', 'users'));
     }
 
     /**

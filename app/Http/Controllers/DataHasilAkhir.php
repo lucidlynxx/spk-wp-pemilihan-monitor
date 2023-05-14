@@ -11,22 +11,18 @@ class DataHasilAkhir extends Controller
     public function index()
     {
         $penilaians = Penilaian::where('user_id', auth()->user()->id)->get();
+
         $alternatifs = Alternatif::where('user_id', auth()->user()->id)->get();
 
+        $title = 'SPK WP | Data Hasil akhir';
+
         if ($penilaians->isEmpty() || $alternatifs->isEmpty()) {
-            return view('dashboard.hasilAkhir.empty', [
-                'title' => 'SPK WP | Data Perhitungan',
-                'author' => 'Dzaky Syahrizal',
-            ]);
+            return view('dashboard.hasilAkhir.empty', compact('title'));
         }
 
         $rankingWP = $penilaians->sortByDesc('nilai_v');
 
-        return view('dashboard.hasilAkhir.index', [
-            'title' => 'SPK WP | Data Hasil akhir',
-            'author' => 'Dzaky Syahrizal',
-            'penilaians' => $rankingWP
-        ]);
+        return view('dashboard.hasilAkhir.index', compact('title', 'rankingWP'));
     }
 
     public function printDataHasil()

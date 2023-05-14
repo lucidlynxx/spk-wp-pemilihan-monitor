@@ -9,10 +9,9 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login.index', [
-            'title' => 'SPK WP | Login',
-            'author' => 'Dzaky Syahrizal'
-        ]);
+        $title = 'SPK WP | Login';
+
+        return view('login.index', compact('title'));
     }
 
     public function authenticate(Request $request)

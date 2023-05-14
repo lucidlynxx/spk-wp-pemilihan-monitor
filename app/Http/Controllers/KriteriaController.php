@@ -16,11 +16,10 @@ class KriteriaController extends Controller
      */
     public function index()
     {
-        return view('dashboard.kriteria.index', [
-            'title' => 'SPK WP | Data Kriteria',
-            'author' => 'Dzaky Syahrizal',
-            'kriterias' => Kriteria::get()->where('user_id', auth()->user()->id)
-        ]);
+        $title = 'SPK WP | Data Kriteria';
+        $kriterias = Kriteria::get()->where('user_id', auth()->user()->id);
+
+        return view('dashboard.kriteria.index', compact('title', 'kriterias'));
     }
 
     /**
@@ -67,11 +66,10 @@ class KriteriaController extends Controller
             abort(403);
         }
 
-        return view('dashboard.kriteria.edit', [
-            'title' => 'SPK WP | Ubah Data Kriteria',
-            'author' => 'Dzaky Syahrizal',
-            'kriteria' => $data_kriterium,
-        ]);
+        $title = 'SPK WP | Ubah Data Kriteria';
+        $kriteria = $data_kriterium;
+
+        return view('dashboard.kriteria.edit', compact('title', 'kriteria'));
     }
 
     /**

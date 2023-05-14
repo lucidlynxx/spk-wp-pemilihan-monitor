@@ -17,11 +17,10 @@ class AlternatifController extends Controller
      */
     public function index()
     {
-        return view('dashboard.alternatif.index', [
-            'title' => 'SPK WP | Data Alternatif',
-            'author' => 'Dzaky Syahrizal',
-            'alternatifs' => Alternatif::get()->where('user_id', auth()->user()->id)
-        ]);
+        $title = 'SPK WP | Data Alternatif';
+        $alternatifs = Alternatif::get()->where('user_id', auth()->user()->id);
+
+        return view('dashboard.alternatif.index', compact('title', 'alternatifs'));
     }
 
     /**
@@ -31,10 +30,9 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        return view('dashboard.alternatif.create', [
-            'title' => 'SPK WP | Data Alternatif',
-            'author' => 'Dzaky Syahrizal',
-        ]);
+        $title = 'SPK WP | Data Alternatif';
+
+        return view('dashboard.alternatif.create', compact('title'));
     }
 
     /**
@@ -80,11 +78,10 @@ class AlternatifController extends Controller
             abort(403);
         }
 
-        return view('dashboard.alternatif.edit', [
-            'title' => 'SPK WP | Ubah Data Alternatif',
-            'author' => 'Dzaky Syahrizal',
-            'alternatif' => $data_alternatif,
-        ]);
+        $title = 'SPK WP | Ubah Data Alternatif';
+        $alternatif = $data_alternatif;
+
+        return view('dashboard.alternatif.edit', compact('title', 'alternatif'));
     }
 
     /**
