@@ -44,19 +44,19 @@ Route::middleware('guest')->group(function () {
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
-    Route::resource('/data-kriteria', KriteriaController::class)->only('index', 'edit', 'update');
+    Route::resource('/data-kriteria', KriteriaController::class)->only(['index', 'edit', 'update']);
 
-    Route::resource('/data-sub-kriteria', SubKriteriaController::class)->only('index', 'edit', 'update');
-    Route::resource('/data-sub-kriteria1', SubKriteriaController1::class)->only('edit', 'update');
-    Route::resource('/data-sub-kriteria2', SubKriteriaController2::class)->only('edit', 'update');
-    Route::resource('/data-sub-kriteria3', SubKriteriaController3::class)->only('edit', 'update');
-    Route::resource('/data-sub-kriteria4', SubKriteriaController4::class)->only('edit', 'update');
-    Route::resource('/data-sub-kriteria5', SubKriteriaController5::class)->only('edit', 'update');
-    Route::resource('/data-sub-kriteria6', SubKriteriaController6::class)->only('edit', 'update');
+    Route::resource('/data-sub-kriteria', SubKriteriaController::class)->only(['index', 'edit', 'update']);
+    Route::resource('/data-sub-kriteria1', SubKriteriaController1::class)->only(['edit', 'update']);
+    Route::resource('/data-sub-kriteria2', SubKriteriaController2::class)->only(['edit', 'update']);
+    Route::resource('/data-sub-kriteria3', SubKriteriaController3::class)->only(['edit', 'update']);
+    Route::resource('/data-sub-kriteria4', SubKriteriaController4::class)->only(['edit', 'update']);
+    Route::resource('/data-sub-kriteria5', SubKriteriaController5::class)->only(['edit', 'update']);
+    Route::resource('/data-sub-kriteria6', SubKriteriaController6::class)->only(['edit', 'update']);
 
-    Route::resource('/data-alternatif', AlternatifController::class)->except('show', 'destroy');
+    Route::resource('/data-alternatif', AlternatifController::class)->except(['show', 'destroy']);
 
-    Route::resource('/data-penilaian', PenilaianController::class)->except('show', 'destroy');
+    Route::resource('/data-penilaian', PenilaianController::class)->except(['show', 'destroy']);
 
     Route::controller(DataPerhitungan::class)->group(function () {
         Route::get('/data-perhitungan', 'index')->name('data-perhitungan.index');
@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
         Route::get('/data-hasil-akhir/print', 'printDataHasil')->name('data-hasil-akhir.result');
     });
 
-    Route::resource('/data-user', UserController::class)->only('index')->middleware('admin');
+    Route::resource('/data-user', UserController::class)->only(['index'])->middleware('admin');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
