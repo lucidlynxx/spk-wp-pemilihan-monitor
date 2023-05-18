@@ -6,7 +6,7 @@ use App\Models\Alternatif;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Penilaian;
 
-class DataHasilAkhir extends Controller
+class DataHasilAkhirController extends Controller
 {
     public function index()
     {

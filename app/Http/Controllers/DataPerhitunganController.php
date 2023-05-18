@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\WeightedProductService;
 
-class DataPerhitungan extends Controller
+class DataPerhitunganController extends Controller
 {
     public function index()
     {

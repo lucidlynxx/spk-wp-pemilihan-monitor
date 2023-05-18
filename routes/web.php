@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DataHasilAkhir;
-use App\Http\Controllers\DataPerhitungan;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\DataHasilAkhirController;
+use App\Http\Controllers\DataPerhitunganController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -58,12 +58,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
 
     Route::resource('/data-penilaian', PenilaianController::class)->except(['show', 'destroy']);
 
-    Route::controller(DataPerhitungan::class)->group(function () {
+    Route::controller(DataPerhitunganController::class)->group(function () {
         Route::get('/data-perhitungan', 'index')->name('data-perhitungan.index');
         Route::get('/data-perhitungan/hitung', 'hitung')->name('data-perhitungan.result');
     });
 
-    Route::controller(DataHasilAkhir::class)->group(function () {
+    Route::controller(DataHasilAkhirController::class)->group(function () {
         Route::get('/data-hasil-akhir', 'index')->name('data-hasil-akhir.index');
         Route::get('/data-hasil-akhir/print', 'printDataHasil')->name('data-hasil-akhir.result');
     });
