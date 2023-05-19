@@ -35,8 +35,6 @@
                             <td>{{ $penilaian->alternatif->namaAlternatif }}</td>
                             <td>
                                 <div class="btn-group-sm" role="group">
-                                    {{-- <a href="/dashboard/data-penilaian/{{ $penilaian->slug }}"
-                                        class="btn btn-info"><i class="bi bi-eye"></i> Lihat</a> --}}
                                     <a href="{{ route('data-penilaian.edit', $penilaian->slug) }}"
                                         class="btn btn-warning"><i class="bi bi-pen"></i> Ubah</a>
                                 </div>
@@ -57,38 +55,3 @@
     </div>
 </main>
 @endsection
-
-{{-- @push('modalPenilaian')
-<script>
-    //button create post event
-        $('body').on('click', '#btn-edit-penilaian', function () {
-
-            let penilaian_id = $(this).data('id');
-
-            //fetch detail post with ajax
-            $.ajax({
-                url: `/data-penilaian/${penilaian_id}`,
-                type: "GET",
-                cache: false,
-                success:function(response){
-
-                    //fill data to form
-                    $('#alternatif-edit').val(response.data.alternatif_id);
-                    $('#harga-edit').val(response.data.C1_id);
-                    $('#ukuranLayar-edit').val(response.data.C2_id);
-                    $('#resolusiLayar-edit').val(response.data.C3_id);
-                    $('#teknologiPanel-edit').val(response.data.C4_id);
-                    $('#refreshRate-edit').val(response.data.C5_id);
-                    $('#responseTime-edit').val(response.data.C6_id);
-                    $('#colorGamut-edit').val(response.data.C7_id);
-
-                    //open modal
-                    $('#modal-edit').modal('show');
-                }
-            });
-            $('#modal-edit').modal('show');
-        });
-
-        console.log($('#alternatif-edit'));
-</script>
-@endpush --}}

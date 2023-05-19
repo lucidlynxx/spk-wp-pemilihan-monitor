@@ -14,11 +14,6 @@ class SubKriteria6 extends Model
 
     protected $with = ['user'];
 
-    // public function penilaian()
-    // {
-    //     return $this->hasMany(Penilaian::class);
-    // }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

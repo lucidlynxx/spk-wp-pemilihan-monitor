@@ -15,7 +15,6 @@
             </div>
             <div class="d-flex justify-content-start">
                 <div class="ms-3 mt-3">
-                    {{-- @livewire('reset-alert') --}}
                     <a href="{{ route('data-alternatif.create') }}" class="btn btn-primary btn-sm"><i
                             class="bi bi-plus-lg"></i> Tambah Alternatif</a>
                 </div>
