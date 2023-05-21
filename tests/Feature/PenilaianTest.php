@@ -57,7 +57,6 @@ class PenilaianTest extends TestCase
         ]);
 
         $response->assertSessionHasNoErrors();
-        $response->assertRedirect('/dashboard/data-penilaian');
         $this->assertCount(1, Penilaian::all());
         $this->assertDatabaseHas('penilaians', [
             'user_id' => $user->id,

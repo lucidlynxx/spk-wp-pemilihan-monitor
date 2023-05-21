@@ -44,7 +44,6 @@ class AlternatifTest extends TestCase
         ]);
 
         $response->assertSessionHasNoErrors();
-        $response->assertRedirect('/dashboard/data-alternatif');
         $this->assertCount(1, Alternatif::all());
         $this->assertDatabaseHas('alternatifs', [
             'user_id' => $user->id,

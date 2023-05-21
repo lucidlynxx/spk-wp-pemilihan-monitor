@@ -41,6 +41,8 @@ Route::middleware('guest')->group(function () {
     });
 });
 
+Route::get('/', [HomeController::class, 'cover'])->name('cover');
+
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 

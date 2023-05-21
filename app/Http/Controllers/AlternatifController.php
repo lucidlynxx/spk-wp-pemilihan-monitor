@@ -52,7 +52,7 @@ class AlternatifController extends Controller
 
         alert()->success('Buat Data Sukses!', 'Data Alternatif telah ditambahkan.');
 
-        return redirect('/dashboard/data-alternatif');
+        return back();
     }
 
     /**
@@ -113,7 +113,7 @@ class AlternatifController extends Controller
 
         alert()->success('Ubah Data Sukses!', 'Data Alternatif telah diubah.');
 
-        return redirect('/dashboard/data-alternatif');
+        return redirect()->route('data-alternatif.index');
     }
 
     /**

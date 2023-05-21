@@ -66,7 +66,7 @@ class PenilaianController extends Controller
 
         alert()->success('Buat Data Sukses!', 'Data Penilaian telah ditambahkan.');
 
-        return redirect('/dashboard/data-penilaian');
+        return back();
     }
 
     /**
@@ -135,7 +135,7 @@ class PenilaianController extends Controller
 
         alert()->success('Ubah Data Sukses!', 'Data Penilaian telah diubah.');
 
-        return redirect('/dashboard/data-penilaian');
+        return redirect()->route('data-penilaian.index');
     }
 
     /**
