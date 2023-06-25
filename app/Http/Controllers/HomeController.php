@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alternatif;
+use App\Models\Kriteria;
 use App\Models\Penilaian;
 
 class HomeController extends Controller
@@ -11,32 +11,33 @@ class HomeController extends Controller
     {
         $title = 'SPK WP | Dashboard';
 
-        $dataPenilaians = Penilaian::where('user_id', auth()->user()->id)->get();
+        $dataPenilaians = Penilaian::where('user_id', auth()->user()->id)->get()->sortBy('nilai_v');
+
+        $dataKriterias = Kriteria::where('user_id', auth()->user()->id)->get();
+
+        $formattedUpdatedAtKriteria = $dataKriterias->first()->getFormattedUpdatedAt();
+        $dataKriteriaNama = $dataKriterias->pluck('namaKriteria');
+        $dataKriteriaBobot = $dataKriterias->pluck('bobot');
 
         if ($dataPenilaians->isEmpty()) {
             $formattedUpdatedAt = 'Data Kosong';
             $dataNilaiV = null;
             $dataNamaAlternatif = null;
-            return view('dashboard.index', compact('title', 'formattedUpdatedAt', 'dataNilaiV', 'dataNamaAlternatif'));
-        }
-
-        $dataWaktuUpdate = $dataPenilaians->pluck('updated_at');
-
-        $WaktuUpdate = $dataWaktuUpdate[0];
-
-        if ($WaktuUpdate->isToday()) {
-            $formattedUpdatedAt = 'Updated today at ' . $WaktuUpdate->format('h:i A');
-        } elseif ($WaktuUpdate->isYesterday()) {
-            $formattedUpdatedAt = 'Updated yesterday at ' . $WaktuUpdate->format('h:i A');
         } else {
-            $formattedUpdatedAt = 'Updated on ' . $WaktuUpdate->format('F j, Y') . ' at ' . $WaktuUpdate->format('h:i A');
+            $formattedUpdatedAt = $dataPenilaians->first()->getFormattedUpdatedAt();
+            $dataNilaiV = $dataPenilaians->pluck('nilai_v');
+            $dataNamaAlternatif = $dataPenilaians->pluck('alternatif.namaAlternatif');
         }
 
-        $dataNilaiV = $dataPenilaians->pluck('nilai_v');
-
-        $dataNamaAlternatif = Alternatif::where('user_id', auth()->user()->id)->pluck('namaAlternatif');
-
-        return view('dashboard.index', compact('title', 'formattedUpdatedAt', 'dataNilaiV', 'dataNamaAlternatif'));
+        return view('dashboard.index', compact(
+            'title',
+            'dataKriteriaNama',
+            'dataKriteriaBobot',
+            'formattedUpdatedAtKriteria',
+            'dataNamaAlternatif',
+            'dataNilaiV',
+            'formattedUpdatedAt',
+        ));
     }
 
     public function cover()

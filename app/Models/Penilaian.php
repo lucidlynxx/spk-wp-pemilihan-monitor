@@ -11,6 +11,7 @@ class Penilaian extends Model
 
     protected $guarded = ['id'];
     protected $with = ['alternatif', 'user'];
+    protected $casts = ['updated_at' => 'datetime'];
 
     public function alternatif()
     {
@@ -25,5 +26,22 @@ class Penilaian extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function getFormattedUpdatedAt()
+    {
+        if ($this->updated_at === null) {
+            return 'Data Kosong';
+        }
+
+        $updatedAt = $this->updated_at;
+
+        if ($updatedAt->isToday()) {
+            return 'Updated today at ' . $updatedAt->format('h:i A');
+        } elseif ($updatedAt->isYesterday()) {
+            return 'Updated yesterday at ' . $updatedAt->format('h:i A');
+        } else {
+            return 'Updated on ' . $updatedAt->format('F j, Y') . ' at ' . $updatedAt->format('h:i A');
+        }
     }
 }

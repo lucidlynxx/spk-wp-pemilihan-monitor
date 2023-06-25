@@ -24,7 +24,7 @@ var myLineChart = new Chart(ctx, {
           unit: 'monitor'
         },
         gridLines: {
-          display: false
+          display: true
         },
         ticks: {
           maxTicksLimit: dataNamaAlternatif.length
@@ -42,7 +42,7 @@ var myLineChart = new Chart(ctx, {
       }],
     },
     legend: {
-      display: false
+      display: true
     }
   }
 });

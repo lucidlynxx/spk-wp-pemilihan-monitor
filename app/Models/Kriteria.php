@@ -11,8 +11,8 @@ class Kriteria extends Model
     use HasFactory, Sluggable;
 
     protected $guarded = ['id'];
-
     protected $with = ['user'];
+    protected $casts = ['updated_at' => 'datetime'];
 
     public function user()
     {
@@ -31,5 +31,22 @@ class Kriteria extends Model
                 'source' => 'kodeKriteria'
             ]
         ];
+    }
+
+    public function getFormattedUpdatedAt()
+    {
+        if ($this->updated_at === null) {
+            return 'Data Belum Diupdate';
+        }
+
+        $updatedAt = $this->updated_at;
+
+        if ($updatedAt->isToday()) {
+            return 'Updated today at ' . $updatedAt->format('h:i A');
+        } elseif ($updatedAt->isYesterday()) {
+            return 'Updated yesterday at ' . $updatedAt->format('h:i A');
+        } else {
+            return 'Updated on ' . $updatedAt->format('F j, Y') . ' at ' . $updatedAt->format('h:i A');
+        }
     }
 }
