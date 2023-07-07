@@ -2,32 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kriteria;
-use App\Models\Penilaian;
+use App\Services\WeightedProductService;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(WeightedProductService $weightedProduct)
     {
         $title = 'SPK WP | Dashboard';
 
-        $dataPenilaians = Penilaian::where('user_id', auth()->user()->id)->get()->sortBy('nilai_v');
+        list($penilaians, $kriterias) = $weightedProduct->calculate();
 
-        $dataKriterias = Kriteria::where('user_id', auth()->user()->id)->get();
+        $dataPenilaians = $penilaians->sortBy('nilai_v');
+        $formattedUpdatedAt = $dataPenilaians->isEmpty() ? 'Data Kosong' : $dataPenilaians->first()->getFormattedUpdatedAt();
 
+        $dataKriterias = $kriterias;
         $formattedUpdatedAtKriteria = $dataKriterias->first()->getFormattedUpdatedAt();
+
         $dataKriteriaNama = $dataKriterias->pluck('namaKriteria');
         $dataKriteriaBobot = $dataKriterias->pluck('bobot');
 
-        if ($dataPenilaians->isEmpty()) {
-            $formattedUpdatedAt = 'Data Kosong';
-            $dataNilaiV = null;
-            $dataNamaAlternatif = null;
-        } else {
-            $formattedUpdatedAt = $dataPenilaians->first()->getFormattedUpdatedAt();
-            $dataNilaiV = $dataPenilaians->pluck('nilai_v');
-            $dataNamaAlternatif = $dataPenilaians->pluck('alternatif.namaAlternatif');
-        }
+        $dataNilaiV = $dataPenilaians->pluck('nilai_v');
+        $dataNamaAlternatif = $dataPenilaians->pluck('alternatif.namaAlternatif');
+
 
         return view('dashboard.index', compact(
             'title',
