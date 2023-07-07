@@ -56,17 +56,6 @@ class AlternatifController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Alternatif  $alternatif
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Alternatif $data_alternatif)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Alternatif  $alternatif
@@ -114,16 +103,5 @@ class AlternatifController extends Controller
         alert()->success('Ubah Data Sukses!', 'Data Alternatif telah diubah.');
 
         return redirect()->route('data-alternatif.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Alternatif  $alternatif
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Alternatif $alternatif)
-    {
-        //
     }
 }

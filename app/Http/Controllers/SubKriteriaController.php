@@ -43,37 +43,6 @@ class SubKriteriaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreSubKriteriaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    // public function store(StoreSubKriteriaRequest $request)
-    // {
-    //     //
-    // }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SubKriteria  $subKriteria
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SubKriteria $data_sub_kriterium)
-    {
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\SubKriteria  $subKriteria
@@ -121,16 +90,5 @@ class SubKriteriaController extends Controller
         alert()->success('Ubah Data Sukses!', 'Data Sub Kriteria telah diubah.');
 
         return redirect('/dashboard/data-sub-kriteria');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SubKriteria  $subKriteria
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SubKriteria $subKriteria)
-    {
-        //
     }
 }

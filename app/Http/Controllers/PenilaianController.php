@@ -70,25 +70,6 @@ class PenilaianController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Penilaian  $penilaian
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Penilaian $data_penilaian)
-    {
-        // if (Gate::denies('penilaian', $data_penilaian)) {
-        //     abort(403);
-        // }
-
-        // return view('dashboard.penilaian.show', [
-        //     'title' => 'SPK WP | Detail Data Penilaian',
-        //     'author' => 'Dzaky Syahrizal',
-        //     'penilaian' => $data_penilaian
-        // ]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Penilaian  $penilaian
@@ -136,16 +117,5 @@ class PenilaianController extends Controller
         alert()->success('Ubah Data Sukses!', 'Data Penilaian telah diubah.');
 
         return redirect()->route('data-penilaian.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Penilaian  $penilaian
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Penilaian $penilaian)
-    {
-        //
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kriteria;
-use App\Http\Requests\StoreKriteriaRequest;
 use App\Http\Requests\UpdateKriteriaRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -20,38 +19,6 @@ class KriteriaController extends Controller
         $kriterias = Kriteria::get()->where('user_id', auth()->user()->id);
 
         return view('dashboard.kriteria.index', compact('title', 'kriterias'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreKriteriaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    // public function store(StoreKriteriaRequest $request)
-    // {
-    //     //
-    // }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kriteria  $kriteria
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Kriteria $kriteria)
-    {
-        //
     }
 
     /**
@@ -102,16 +69,5 @@ class KriteriaController extends Controller
         alert()->success('Ubah Data Sukses!', 'Data Kriteria telah diubah.');
 
         return redirect('/dashboard/data-kriteria');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Kriteria  $kriteria
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Kriteria $kriteria)
-    {
-        //
     }
 }

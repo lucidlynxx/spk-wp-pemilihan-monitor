@@ -9,48 +9,6 @@ use Illuminate\Support\Facades\Gate;
 class SubKriteriaController4 extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SubKriteria4  $subKriteria4
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SubKriteria4 $subKriteria4)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\SubKriteria4  $subKriteria4
@@ -98,16 +56,5 @@ class SubKriteriaController4 extends Controller
         alert()->success('Ubah Data Sukses!', 'Data Sub Kriteria telah diubah.');
 
         return redirect('/dashboard/data-sub-kriteria');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SubKriteria4  $subKriteria4
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SubKriteria4 $subKriteria4)
-    {
-        //
     }
 }
